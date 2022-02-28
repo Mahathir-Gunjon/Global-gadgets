@@ -6,9 +6,9 @@ body{
 }
 #demotext {
     color: #ffffff;
-    text-shadow: -5px 5px 0px #00ce60, -8px 8px 0px #00c55c;
+    text-shadow: -5px 5px 0px #01b153, -8px 8px 0px #00c55ca1;
     color: #ffffff;
-    }
+}
 /* button style  */
 .btn-style{
     background-color: #00ce60;
