@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 /* main  gradient style  */
 body{
-    background-color:#0080ff1e;
+    font-family: 'Poppins', sans-serif;
+    background-color:#0080ff34;
 }
+#demotext {
+    color: #ffffff;
+    text-shadow: -5px 5px 0px #00ce60, -8px 8px 0px #00c55c;
+    color: #ffffff;
+    }
 /* button style  */
 .btn-style{
     background-color: #00ce60;
