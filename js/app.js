@@ -24,17 +24,25 @@ const displayReasult = phones => {
         const div = document.createElement('div')
         div.classList.add('col-lg-4', 'col-md-6', 'col-12')
         div.innerHTML = `
-        <div onclick="loadPhoneDetails(${phone.band})" class="card border-0 shadow-lg rounded-3 pt-3 m-4">
+        <div class="card border-0 shadow-lg rounded-3 pt-3 m-4 bg-light">
         <img src="${phone.image}" class="card-img-top w-75 mx-auto pb-2" alt="...">
             <div class="card-body">
-                <h5 class="card-title">${phone.phone_name}</h5>
+                <h4 class="card-title">${phone.phone_name}</h4>
                 <p class="card-text">
-                Phone brand:${phone.brand}
+                <b>Brand: </b>${phone.brand}
                 </p>
-                <button onclick="()" class="btn btn-style fs-4 fw-normal">Explore</button>
+                <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-style shadow fs-4 fw-normal">Explore</button>
             </div>
         </div>
         `
         searchReasult.appendChild(div)
     });
+}
+
+const loadPhoneDetails = async phoneId =>{
+    console.log(phoneId);
+    const idUrl = `https://openapi.programming-hero.com/api/phone/${phoneId}`
+    const res = await fetch(idUrl)
+    const data = await res.json()
+    console.log(data.data.mainFeatures)
 }

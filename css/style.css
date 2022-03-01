@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 /* main  gradient style  */
 body{
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color:#0080ff34;
+}
+header{
+    margin-top: -45px;
+    background-color: #00ff7721;
+    height: 100px;
 }
 #demotext {
     color: #ffffff;
