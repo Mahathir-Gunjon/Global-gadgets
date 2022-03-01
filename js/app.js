@@ -17,15 +17,27 @@ const allPhones = async () => {
     spinner('block')
     searchContentHide('none')
     searchText.value = ''
-    // get data from api
+    // search text empty error text show
+    if(searchText == ''){
+        errorText('block')
+        spinner('none')
+    }
+    else{
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         const res = await fetch(url)
         const data = await res.json()
         displayReasult(data.data)
+        // boolean error text show
+        if(data.status == false){
+            errorText('block')
+        }
+        else{
+        errorText('none')
+        }
+    }
 }
-
-const displayReasult = phones => {
-    // console.log(phones);
+// display phone data by cards
+const displayReasult = phones => { 
     const searchReasult = document.getElementById('search-result')
     searchReasult.textContent = '';
     phones?.forEach(phone => {
@@ -49,13 +61,11 @@ const displayReasult = phones => {
     });  
     spinner('none')
     searchContentHide('block')
-    errorText('none')
     
 }
 
 // phone data load 
 const loadPhoneDetails = async phoneId =>{
-    // console.log(phoneId);
     const idUrl = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     const res = await fetch(idUrl)
     const data = await res.json()
@@ -68,7 +78,7 @@ const detailsResult = PhoneDetails => {
         const div = document.createElement('div')
         div.classList.add('col-12')
         div.innerHTML = `
-        <div class="card mb-3 border-0 shadow-lg text-dark">
+        <div class="card mb-3 p-3 border-0 shadow-lg text-dark">
             <div class="row g-0">
             <div class="col-md-4">
                 <img src="${PhoneDetails.image? PhoneDetails.image:'No image found'}" class="w-100 p-4 rounded-start" alt="...">
