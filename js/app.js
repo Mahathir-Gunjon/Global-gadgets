@@ -27,6 +27,8 @@ const allPhones = async () => {
         const res = await fetch(url)
         const data = await res.json()
         displayReasult(data.data)
+        // data.data.slice(0, 20)
+        // console.log(data.data);
         // boolean error text show
         if(data.status == false){
             errorText('block')
@@ -38,9 +40,10 @@ const allPhones = async () => {
 }
 // display phone data by cards
 const displayReasult = phones => { 
+    const cardLimit = phones.slice(0, 20) 
     const searchReasult = document.getElementById('search-result')
     searchReasult.textContent = '';
-    phones?.forEach(phone => {
+    cardLimit?.forEach(phone => {
         const div = document.createElement('div')
         div.classList.add('col-lg-4', 'col-md-6', 'col-12')
         div.innerHTML = `
@@ -60,10 +63,8 @@ const displayReasult = phones => {
         searchReasult.appendChild(div)
     });  
     spinner('none')
-    searchContentHide('block')
-    
+    searchContentHide('block') 
 }
-
 // phone data load 
 const loadPhoneDetails = async phoneId =>{
     const idUrl = `https://openapi.programming-hero.com/api/phone/${phoneId}`
