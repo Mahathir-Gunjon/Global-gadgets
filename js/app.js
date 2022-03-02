@@ -27,9 +27,7 @@ const allPhones = async () => {
         const res = await fetch(url)
         const data = await res.json()
         displayReasult(data.data)
-        // data.data.slice(0, 20)
-        // console.log(data.data);
-        // boolean error text show
+        // error text show
         if(data.status == false){
             errorText('block')
         }
@@ -56,7 +54,9 @@ const displayReasult = phones => {
                 <p class="card-text">
                 <b>Brand: </b>${phone.brand? phone.brand:'No brand found'}
                 </p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-style shadow fs-4 fw-normal">Explore</button>
+                <a href="#" onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-style shadow fs-4 fw-normal details-card">
+                Explore
+                </a>
             </div>
         </div>
         `
@@ -171,6 +171,5 @@ const detailsResult = PhoneDetails => {
         </div>
         `
         fullDetails.appendChild(div)
-}
-                 
+}              
                         
